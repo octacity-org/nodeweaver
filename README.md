@@ -66,7 +66,7 @@ At this stage the command only prints `Hello from nodeweaver!`. The planned scan
 
 ## Roadmap
 
-- [ ] **Phase 0: Project skeleton** (Python package, `uv`, `tests/`, `examples/`)
+- [x] **Phase 0: Project skeleton** (Python package, `uv`, `tests/`, `examples/`)
 - [ ] **Phase 1: Static parsing** with tree-sitter and an intermediate representation
 - [ ] **Phase 2: Import resolution** and dependency graph
 - [ ] **Phase 3: Storage and caching** with Zova
