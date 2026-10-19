@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "file": "src/auth/login.py",
+  "language": "python",
+  "parse_error": false,
+  "imports": [
+    {"module": "src.auth.models", "names": ["User"], "alias": null, "relative_level": 0, "line": 1}
+  ],
+  "classes": [
+    {"name": "LoginError", "line": 10, "methods": [{"name": "__init__", "line": 11}]}
+  ],
+  "functions": [
+    {"name": "login_user", "line": 20}
+  ],
+  "calls": [
+    {"name": "hash_password", "line": 24, "caller": "login_user"}
+  ]
+}
