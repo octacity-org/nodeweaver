@@ -4,15 +4,26 @@
   "language": "python",
   "parse_error": false,
   "imports": [
-    {"module": "src.auth.models", "names": ["User"], "alias": null, "relative_level": 0, "line": 1}
+    {"module": "hashlib", "name": null, "alias": null, "relative_level": 0, "line": 1},
+    {"module": "src.auth.models", "name": "User", "alias": null, "relative_level": 0, "line": 2},
+    {"module": "src.auth.errors", "name": "AuthError", "alias": "Err", "relative_level": 0, "line": 3},
+    {"module": null, "name": "utils", "alias": null, "relative_level": 1, "line": 4}
   ],
   "classes": [
-    {"name": "LoginError", "line": 10, "methods": [{"name": "__init__", "line": 11}]}
+    {
+      "name": "LoginError",
+      "line": 7,
+      "methods": [
+        {"name": "__init__", "qualname": "LoginError.__init__", "line": 8}
+      ]
+    }
   ],
   "functions": [
-    {"name": "login_user", "line": 20}
+    {"name": "login_user", "qualname": "login_user", "line": 12}
   ],
   "calls": [
-    {"name": "hash_password", "line": 24, "caller": "login_user"}
+    {"name": "hashlib.sha256", "receiver": "hashlib", "line": 14, "caller": "login_user"},
+    {"name": "User.get", "receiver": "User", "line": 15, "caller": "login_user"},
+    {"name": "print", "receiver": null, "line": 20, "caller": null}
   ]
 }
