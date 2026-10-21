@@ -5,7 +5,11 @@ Conventions (decided in issue #5):
 - Paths are relative to the scan root and use "/" on every operating system.
 - Line numbers are 1-based. tree-sitter rows are 0-based: convert them only
   with `line_from_row`.
-- Lists are in source order.
+- Lists are in source order, i.e. sorted by (line, column) of where an entry
+  starts. If two entries start at the same position, the outer one comes
+  first: for `a.b().c()` the call `a.b().c` is listed before `a.b`. This is
+  not the order of execution. The column is not stored, so the order of the
+  list is the only record of it.
 - Only definitions that are not inside another function or class are listed.
   Methods are listed under their class. Nested functions, lambdas and nested
   classes are not listed.
@@ -95,13 +99,38 @@ class ClassIR(IRModel):
 class CallIR(IRModel):
     """A call, as written in the source (e.g. "self.save", "a.b().c").
 
-    `receiver` is the source text of the object in front of the last dot:
-    "self" for `self.save()`, "super()" for `super().__init__()`, "a.b()" for
-    `a.b().c()`. It is None for bare calls such as `f()` and for callees that
-    are not an attribute access, such as `handlers[0]()`.
+    `name` is the callee: the expression that is called, without the argument
+    list of the call itself. `receiver` is the object in front of the last dot.
+    It is None for bare calls such as `f()` and for callees that are not an
+    attribute access, such as `handlers[0]()`.
+
+    Both texts are built from the syntax tree:
+
+    - `receiver` is the source text of the object, with every run of whitespace
+      (spaces, tabs, line breaks) collapsed to one space. This also makes the
+      text the same on Windows and Linux. Arguments inside it are kept.
+    - For an attribute call, `name` is `receiver + "." + attribute`, so spaces
+      or line breaks around the last dot in the source do not appear in it.
+    - For any other callee, `name` is its source text with whitespace collapsed.
+
+    Examples:
+
+        col.Counter(i.name for i in items).most_common(1)
+            name = "col.Counter(i.name for i in items).most_common"
+            receiver = "col.Counter(i.name for i in items)"
+        self.save()      name = "self.save", receiver = "self"
+        f()              name = "f", receiver = None
+        handlers[0](3)   name = "handlers[0]", receiver = None
+
+    A chain written on three lines (`a`, `.b()`, `.c()`) gives name "a .b().c"
+    and receiver "a .b()" for the outer call.
+
+    `line` is the line where the call expression starts. All calls of a chain
+    written over several lines share the first line.
 
     `caller` is the qualname of the nearest enclosing listed function or
     method. It is None outside any listed function (module level, class body).
+    In v1, class-body calls cannot be told apart from module-level calls.
     """
 
     name: Name

@@ -117,6 +117,8 @@ def test_same_qualname_twice_is_allowed():
         ("super().__init__", "super()"),  # super().__init__()
         ("mod.func", "mod"),  # mod.func()
         ("a.b().c", "a.b()"),  # a.b().c()
+        ("col.Counter(i.name for i in items).most_common", "col.Counter(i.name for i in items)"),
+        ("a .b().c", "a .b()"),  # chain on three lines: whitespace collapsed to one space
         ("f", None),  # bare call
         ("handlers[0]", None),  # not an attribute access
     ],
@@ -132,6 +134,7 @@ def test_valid_receivers(name, receiver):
         ("self.", "self"),  # no attribute after the dot
         ("other.save", "self"),  # receiver is not the prefix of name
         ("self.save", ""),  # empty receiver
+        ("a .b() .c", "a .b()"),  # name must be built as receiver + "." + attribute
     ],
 )
 def test_invalid_receivers(name, receiver):

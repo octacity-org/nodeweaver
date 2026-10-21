@@ -53,6 +53,10 @@ Run it with `cd examples/sample_package && python -c "import pkg; print(pkg.run(
 
 `broken.py` has valid functions before and after an invalid one. A parser should flag the file as having an error and still read the valid parts. **Do not fix this file.** Your editor will underline it; that is expected.
 
+## ir-example.json
+
+A hand-written example of the IR for one file (see `src/nodeweaver/ir.py`), used by `tests/test_ir.py`. It is not produced by the parser.
+
 ## Tests
 
 `tests/test_examples.py` checks that the valid samples compile and that `broken.py` still raises a `SyntaxError`, so a sample cannot change its purpose by accident.
