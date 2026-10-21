@@ -62,6 +62,14 @@ uv run nodeweaver
 
 At this stage the command only prints `Hello from nodeweaver!`. The planned scan command (`nodeweaver scan ./path`) does not exist yet.
 
+Run the tests with:
+
+```bash
+uv run pytest
+```
+
+Sample projects used by the tests live in [`examples/`](examples/README.md).
+
 ---
 
 ## Roadmap
