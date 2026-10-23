@@ -68,6 +68,13 @@ Run the tests with:
 uv run pytest
 ```
 
+CI runs the same two commands on every pull request. Run them locally before you push:
+
+```bash
+uv sync --locked
+uv run pytest
+```
+
 Sample projects used by the tests live in [`examples/`](examples/README.md).
 
 ---
