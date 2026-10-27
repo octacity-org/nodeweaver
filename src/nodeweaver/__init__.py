@@ -1,2 +1,1 @@
-def main() -> None:
-    print("Hello from nodeweaver!")
+"""NodeWeaver: turn a codebase into an interactive architecture map."""
