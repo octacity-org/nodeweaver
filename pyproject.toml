@@ -10,10 +10,11 @@ dependencies = [
     "pydantic>=2.14.1",
     "tree-sitter>=0.26.0",
     "tree-sitter-python>=0.25.0",
+    "typer>=0.27.3",
 ]
 
 [project.scripts]
-nodeweaver = "nodeweaver:main"
+nodeweaver = "nodeweaver.cli:app"
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14.0"]

@@ -57,10 +57,10 @@ Requirements: [uv](https://docs.astral.sh/uv/) and Git. `uv` installs the pinned
 git clone https://github.com/octacity-org/nodeweaver.git
 cd nodeweaver
 uv sync
-uv run nodeweaver
+uv run nodeweaver scan examples
 ```
 
-At this stage the command only prints `Hello from nodeweaver!`. The planned scan command (`nodeweaver scan ./path`) does not exist yet.
+At this stage `scan` only lists the Python files in a directory, one per line, relative to that directory and sorted. It skips `.git`, `.venv`, `venv`, `__pycache__`, `node_modules`, `.pytest_cache`, `.mypy_cache`, `build` and `dist`. Parsing the files and printing their IR comes next. Run `uv run nodeweaver --help` for all commands.
 
 Run the tests with:
 
