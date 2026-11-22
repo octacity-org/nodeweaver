@@ -33,6 +33,13 @@ Use CBM as the analysis backend, behind a `Backend` interface and a `ProjectGrap
 
 The `Backend` interface and the tag `native-parser-v0` make it possible to bring back a native backend.
 
+## Open questions
+
+- Target resolution: is the main view of the product at file, module and class level, or a function-level call graph? CBM covers the first well and the second partly.
+- Distribution: does the user install CBM, or does a `setup` command download a pinned release?
+- Privacy wording: what do we promise about network use until it is verified?
+- Still to verify: network behaviour, run time, `sample_package`, `sample_broken` and the ordering of the output.
+
 ## Rules carried over from the native IR
 
 The `ProjectGraph` that NodeWeaver owns keeps these rules, which were decided for the native IR:
