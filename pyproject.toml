@@ -8,8 +8,6 @@ authors = [
 requires-python = ">=3.12"
 dependencies = [
     "pydantic>=2.14.1",
-    "tree-sitter>=0.26.0",
-    "tree-sitter-python>=0.25.0",
     "typer>=0.27.3",
 ]
 
