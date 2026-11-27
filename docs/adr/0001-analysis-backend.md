@@ -1,6 +1,6 @@
 # ADR 0001: Use codebase-memory-mcp as the analysis backend
 
-Status: Proposed
+Status: Accepted
 Date: 2026-11-22
 
 ## Context
