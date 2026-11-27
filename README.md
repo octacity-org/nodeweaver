@@ -45,7 +45,7 @@ Repository → AST Parser → Intermediate Representation → Dependency Graph �
 
 ### Planned Stack
 
-Python 3.12, `uv`, tree-sitter, Zova (storage), Ollama (local LLM), D3.js.
+Python 3.12, `uv`, [codebase-memory-mcp](https://github.com/octacity-org/codebase-memory-mcp) as the analysis engine (see [ADR 0001](docs/adr/0001-analysis-backend.md)), Ollama (local LLM), D3.js.
 
 ---
 
@@ -81,14 +81,7 @@ Sample projects used by the tests live in [`examples/`](examples/README.md).
 
 ## Roadmap
 
-- [x] **Phase 0: Project skeleton** (Python package, `uv`, `tests/`, `examples/`)
-- [ ] **Phase 1: Static parsing** with tree-sitter and an intermediate representation
-- [ ] **Phase 2: Import resolution** and dependency graph
-- [ ] **Phase 3: Storage and caching** with Zova
-- [ ] **Phase 4: Milestone**, a working static graph without any LLM
-- [ ] **Phase 5: Semantic layer** with a local LLM
-- [ ] **Phase 6: Visual report** (`overview.html`) with clickable module cards
-- [ ] **Phase 7: Tests, CI, and documentation mode**
+The roadmap is being rewritten around the analysis backend chosen in [ADR 0001](docs/adr/0001-analysis-backend.md). Planned order: the graph contract and the adapter for the backend, the `scan` command, a first `overview.html` report, installation of the backend, then local LLM summaries.
 
 ---
 

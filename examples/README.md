@@ -1,6 +1,6 @@
 # Examples
 
-Small Python projects used as input for NodeWeaver's parser, the `scan` command, and their tests (including the golden-file tests in #14). Keep them small: each file exists to show specific constructs.
+Small Python projects used as input for NodeWeaver's analysis backend, the scan command, and their tests. Keep them small: each file exists to show specific constructs.
 
 | Sample | What it covers |
 | --- | --- |
@@ -53,12 +53,8 @@ Run it with `cd examples/sample_package && python -c "import pkg; print(pkg.run(
 
 `broken.py` has valid functions before and after an invalid one. A parser should flag the file as having an error and still read the valid parts. **Do not fix this file.** Your editor will underline it; that is expected.
 
-## ir-example.json
-
-A hand-written example of the IR for one file (see `src/nodeweaver/ir.py`), used by `tests/test_ir.py`. It is not produced by the parser.
-
 ## Tests
 
 `tests/test_examples.py` checks that the valid samples compile and that `broken.py` still raises a `SyntaxError`, so a sample cannot change its purpose by accident.
 
-If you change a sample, update the tables above. The golden files from #14 will also need to be updated and their diffs reviewed.
+If you change a sample, also update any recorded backend output that was made from it.
